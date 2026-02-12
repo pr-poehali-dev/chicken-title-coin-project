@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Test get titles",
+      "method": "GET",
+      "path": "/?action=titles",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "titles": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test get quests",
+      "method": "GET",
+      "path": "/?action=quests",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "quests": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

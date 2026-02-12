@@ -32,7 +32,7 @@ const Index = () => {
 
   const titles = [
     { name: '[NEWBIE]', price: 0, description: 'Начальный титул', color: 'text-gray-400' },
-    { name: '[VIP]', price: 500, description: 'VIP статус', color: 'text-neon-purple' },
+    { name: '[VIP]', price: 500, description: 'Твой второй титул будет, да?', color: 'text-neon-purple' },
     { name: '[ADMIN]', price: 1000, description: 'Администратор', color: 'text-red-500' },
     { name: '[SNIPER]', price: 750, description: 'Снайпер', color: 'text-neon-cyan' },
     { name: '[LEGEND]', price: 2000, description: 'Легенда', color: 'text-yellow-400' },
@@ -40,10 +40,12 @@ const Index = () => {
     { name: '[TASK-MASTER]', price: 1500, description: 'Мастер заданий', color: 'text-green-400' },
     { name: '[CHEATER]', price: 999, description: 'Читер', color: 'text-purple-400' },
     { name: '[CREATOR]', price: 5000, description: 'Создатель', color: 'text-orange-400' },
-    { name: '[COLLAB]', price: 1200, description: 'Коллаборатор', color: 'text-blue-400' },
-    { name: '[SAF ADMIN]', price: 2500, description: 'Старший админ', color: 'text-red-600' },
-    { name: '[SAT ADMIN]', price: 2500, description: 'Технический админ', color: 'text-cyan-400' },
+    { name: '[COLLAB]', price: 1200, description: 'Коллаборация', color: 'text-blue-400' },
+    { name: '[SAF ADMIN]', price: 2500, description: 'Крак', color: 'text-red-600' },
+    { name: '[SAT ADMIN]', price: 2500, description: 'No_Texture', color: 'text-cyan-400' },
     { name: '[TROLLER]', price: 666, description: 'Тролль', color: 'text-pink-400' },
+    { name: '[Третий]', price: 0, description: 'Эксклюзивный титул за 3 дня', color: 'text-amber-500' },
+    { name: '[Ежедневный]', price: 0, description: 'Эксклюзивный титул за 7 дней', color: 'text-emerald-500' },
   ];
 
   const quests = [
@@ -86,25 +88,26 @@ const Index = () => {
       <div className="fixed top-1/2 left-1/4 text-4xl animate-float opacity-30 pointer-events-none" style={{animationDelay: '2s'}}>🎯</div>
 
       <nav className="border-b border-border/50 backdrop-blur-xl bg-card/50 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold neon-glow">ЧикенТитул</h1>
-            <div className="flex gap-2">
+        <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold neon-glow">ЧикенТитул</h1>
+            <div className="flex gap-1 sm:gap-2 flex-wrap">
               {navItems.map(item => (
                 <Button
                   key={item.id}
                   variant={currentPage === item.id ? 'default' : 'ghost'}
                   onClick={() => setCurrentPage(item.id)}
-                  className={currentPage === item.id ? 'neon-border' : ''}
+                  className={`${currentPage === item.id ? 'neon-border' : ''} text-xs sm:text-sm px-2 sm:px-4`}
+                  size="sm"
                 >
-                  <Icon name={item.icon} className="mr-2" size={18} />
-                  {item.label}
+                  <Icon name={item.icon} className="sm:mr-2" size={16} />
+                  <span className="hidden sm:inline">{item.label}</span>
                 </Button>
               ))}
             </div>
-            <div className="flex items-center gap-4">
-              <Badge className="neon-border-cyan px-4 py-2 text-lg">
-                <Icon name="Coins" className="mr-2" size={20} />
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Badge className="neon-border-cyan px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-lg">
+                <Icon name="Coins" className="mr-1 sm:mr-2" size={16} />
                 {coins} TC
               </Badge>
             </div>
@@ -112,38 +115,38 @@ const Index = () => {
         </div>
       </nav>
 
-      <main className="container mx-auto px-4 py-8 relative z-10">
+      <main className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 relative z-10">
         {currentPage === 'home' && (
-          <div className="space-y-8">
-            <div className="text-center space-y-4">
-              <h2 className="text-6xl font-bold neon-glow animate-neon-pulse">ЧикенТитул</h2>
-              <p className="text-xl text-muted-foreground">Зарабатывай ТитулКоины, покупай уникальные титулы и выполняй квесты!</p>
-              <div className="flex justify-center gap-4 mt-6">
-                <Card className="p-6 neon-border-cyan">
-                  <div className="text-4xl font-bold text-neon-cyan">{coins}</div>
-                  <div className="text-sm text-muted-foreground">ТитулКоинов</div>
+          <div className="space-y-6 sm:space-y-8">
+            <div className="text-center space-y-3 sm:space-y-4">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold neon-glow animate-neon-pulse">ЧикенТитул</h2>
+              <p className="text-sm sm:text-lg md:text-xl text-muted-foreground px-4">Зарабатывай ТитулКоины, покупай уникальные титулы и выполняй квесты!</p>
+              <div className="flex justify-center gap-2 sm:gap-4 mt-4 sm:mt-6 flex-wrap">
+                <Card className="p-3 sm:p-6 neon-border-cyan min-w-[100px]">
+                  <div className="text-2xl sm:text-4xl font-bold text-neon-cyan">{coins}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">ТитулКоинов</div>
                 </Card>
-                <Card className="p-6 neon-border-pink">
-                  <div className="text-4xl font-bold text-neon-pink">{purchasedTitles.length}</div>
-                  <div className="text-sm text-muted-foreground">Титулов</div>
+                <Card className="p-3 sm:p-6 neon-border-pink min-w-[100px]">
+                  <div className="text-2xl sm:text-4xl font-bold text-neon-pink">{purchasedTitles.length}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Титулов</div>
                 </Card>
-                <Card className="p-6 neon-border">
-                  <div className="text-4xl font-bold text-neon-purple">{formatTime(timeSpent)}</div>
-                  <div className="text-sm text-muted-foreground">На сайте</div>
+                <Card className="p-3 sm:p-6 neon-border min-w-[100px]">
+                  <div className="text-2xl sm:text-4xl font-bold text-neon-purple">{formatTime(timeSpent)}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">На сайте</div>
                 </Card>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="p-6 hover:neon-border transition-all cursor-pointer" onClick={() => setCurrentPage('titles')}>
-                <Icon name="Award" className="text-neon-purple mb-4" size={48} />
-                <h3 className="text-2xl font-bold mb-2">Титулы</h3>
-                <p className="text-muted-foreground">Покупай уникальные титулы за ТитулКоины</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              <Card className="p-4 sm:p-6 hover:neon-border transition-all cursor-pointer" onClick={() => setCurrentPage('titles')}>
+                <Icon name="Award" className="text-neon-purple mb-3 sm:mb-4" size={40} />
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">Титулы</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">Покупай уникальные титулы за ТитулКоины</p>
               </Card>
-              <Card className="p-6 hover:neon-border-cyan transition-all cursor-pointer" onClick={() => setCurrentPage('quests')}>
-                <Icon name="Target" className="text-neon-cyan mb-4" size={48} />
-                <h3 className="text-2xl font-bold mb-2">Квесты</h3>
-                <p className="text-muted-foreground">Выполняй задания и получай награды</p>
+              <Card className="p-4 sm:p-6 hover:neon-border-cyan transition-all cursor-pointer" onClick={() => setCurrentPage('quests')}>
+                <Icon name="Target" className="text-neon-cyan mb-3 sm:mb-4" size={40} />
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">Квесты</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">Выполняй задания и получай награды</p>
               </Card>
               <Card className="p-6 hover:neon-border-pink transition-all cursor-pointer" onClick={() => setCurrentPage('chat')}>
                 <Icon name="MessageCircle" className="text-neon-pink mb-4" size={48} />
@@ -199,9 +202,9 @@ const Index = () => {
         )}
 
         {currentPage === 'titles' && (
-          <div className="space-y-6">
-            <h2 className="text-4xl font-bold neon-glow mb-8">Магазин титулов</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold neon-glow mb-4 sm:mb-8">Магазин титулов</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {titles.map(title => {
                 const isPurchased = purchasedTitles.includes(title.name);
                 const canAfford = coins >= title.price;
@@ -242,14 +245,14 @@ const Index = () => {
         )}
 
         {currentPage === 'quests' && (
-          <div className="space-y-6">
-            <h2 className="text-4xl font-bold neon-glow mb-8">Квесты</h2>
-            <div className="space-y-4">
+          <div className="space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold neon-glow mb-4 sm:mb-8">Квесты</h2>
+            <div className="space-y-3 sm:space-y-4">
               {quests.map(quest => (
-                <Card key={quest.id} className={`p-6 ${quest.completed ? 'neon-border bg-green-500/10' : 'hover:neon-border'} transition-all`}>
-                  <div className="flex items-center justify-between mb-4">
+                <Card key={quest.id} className={`p-4 sm:p-6 ${quest.completed ? 'neon-border bg-green-500/10' : 'hover:neon-border'} transition-all`}>
+                  <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2">{quest.title}</h3>
+                      <h3 className="text-base sm:text-xl font-bold mb-2">{quest.title}</h3>
                       <div className="flex items-center gap-4">
                         <Badge className="neon-border-cyan">
                           <Icon name="Coins" className="mr-1" size={16} />
@@ -287,9 +290,9 @@ const Index = () => {
 
         {currentPage === 'chat' && (
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold neon-glow mb-8">Чат</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold neon-glow mb-4 sm:mb-8">Чат</h2>
             <Card className="neon-border">
-              <ScrollArea className="h-[500px] p-6">
+              <ScrollArea className="h-[400px] sm:h-[500px] p-3 sm:p-6">
                 <div className="space-y-4">
                   <div className="flex gap-3">
                     <div className="w-10 h-10 rounded-full bg-neon-purple/20 flex items-center justify-center">👤</div>
@@ -356,7 +359,7 @@ const Index = () => {
         )}
       </main>
 
-      <audio src="https://soundcloud.com/klingeris12/nights-ost-the-final-act" autoPlay loop className="hidden" />
+      <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoPlay loop volume={0.3} className="hidden" />
     </div>
   );
 };
